@@ -1,0 +1,151 @@
+{
+  "version": "1.0",
+  "schema": {
+    "id": "string (unique)",
+    "kind": "mcq",
+    "prompt": "string",
+    "choices": [
+      "string",
+      "..."
+    ],
+    "answer_index": 0,
+    "construct": "STM|FR|AVP|PS|ATN|WM|LTM",
+    "weight": 1.0,
+    "min_age": 8,
+    "max_age": 18,
+    "tags": [
+      "math",
+      "pattern"
+    ]
+  },
+  "items": [
+    {
+      "id": "triangular-next",
+      "kind": "mcq",
+      "prompt": "Next triangular number after 10?",
+      "choices": [
+        "15",
+        "16",
+        "21"
+      ],
+      "answer_index": 0,
+      "construct": "STM",
+      "weight": 1.0,
+      "min_age": 10,
+      "max_age": 18,
+      "tags": [
+        "math",
+        "memory"
+      ]
+    },
+    {
+      "id": "traffic-go",
+      "kind": "mcq",
+      "prompt": "Which color is commonly associated with GO signals?",
+      "choices": [
+        "Red",
+        "Green",
+        "Blue"
+      ],
+      "answer_index": 1,
+      "construct": "STM",
+      "weight": 1.0,
+      "min_age": 8,
+      "max_age": 18,
+      "tags": [
+        "general-knowledge"
+      ]
+    },
+    {
+      "id": "chunking-tip",
+      "kind": "mcq",
+      "prompt": "Which is the recommended quick memory strategy?",
+      "choices": [
+        "Write a poem",
+        "Chunk in 3\u2019s",
+        "Sleep 8 hours now"
+      ],
+      "answer_index": 1,
+      "construct": "STM",
+      "weight": 1.0,
+      "min_age": 10,
+      "max_age": 90,
+      "tags": [
+        "memory"
+      ]
+    },
+    {
+      "id": "doubling-series",
+      "kind": "mcq",
+      "prompt": "What comes next: 2, 4, 8, 16, \u2026?",
+      "choices": [
+        "20",
+        "24",
+        "32"
+      ],
+      "answer_index": 2,
+      "construct": "FR",
+      "weight": 1.5,
+      "min_age": 12,
+      "max_age": 90,
+      "tags": [
+        "pattern",
+        "reasoning"
+      ]
+    },
+    {
+      "id": "easy-counting",
+      "kind": "mcq",
+      "prompt": "How many sides does a triangle have?",
+      "choices": [
+        "2",
+        "3",
+        "4"
+      ],
+      "answer_index": 1,
+      "construct": "STM",
+      "weight": 0.5,
+      "min_age": 6,
+      "max_age": 9,
+      "tags": [
+        "math"
+      ]
+    },
+    {
+      "id": "easy-counting bro",
+      "kind": "mcq",
+      "prompt": "How many sides does a triangle have?",
+      "choices": [
+        "2",
+        "3",
+        "4"
+      ],
+      "answer_index": 1,
+      "construct": "STM",
+      "weight": 0.5,
+      "min_age": 90,
+      "max_age": 99,
+      "tags": [
+        "math"
+      ]
+    },
+    {
+      "id": "color-primary",
+      "kind": "mcq",
+      "prompt": "Which one is a primary color of light?",
+      "choices": [
+        "Green",
+        "Cyan",
+        "Yellow"
+      ],
+      "answer_index": 0,
+      "construct": "STM",
+      "weight": 0.8,
+      "min_age": 10,
+      "max_age": 18,
+      "tags": [
+        "science"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SkillPath Cognitive Check</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="site-header">
+    <h1>SkillPath — Cognitive Check</h1>
+    <nav>
+      <button class="link" data-section="intro">Intro</button>
+      <button class="link" data-section="study">Study</button>
+      <button class="link" data-section="task">Task</button>
+      <button class="link" data-section="results">Results</button>
+      <button id="contrastToggle" aria-pressed="false" title="Toggle high-contrast">High contrast</button>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Intro / Consent -->
+    <section id="intro" class="card show">
+      <h2>Welcome</h2>
+      <p>
+        This demo loads questions from a <code>questions.json</code> file so you can keep adding items over months
+        without touching the code. Age is used to select an appropriate subset.
+      </p>
+      <form id="consentForm" class="stack">
+        <label>
+          Display name (optional)
+          <input type="text" id="displayName" placeholder="Alex" autocomplete="name">
+        </label>
+        <label>
+          Your age (in years)
+          <input type="number" id="ageInput" min="4" max="100" step="1" value="14" required>
+        </label>
+        <label class="row">
+          <input type="checkbox" id="consentChk" />
+          <span>I understand this is an educational demo and not a clinical assessment.</span>
+        </label>
+        <button type="submit" class="primary">Start</button>
+      </form>
+    </section>
+
+    <!-- Study Material -->
+    <section id="study" class="card">
+      <div class="row space-between">
+        <h2>Study Card</h2>
+        <div class="mono stamp"><span id="studyTimer">00:00.0</span> / <span id="studyMax">00:30.0</span></div>
+      </div>
+      <p><strong>Read this card once.</strong> Close it when ready to take the task.</p>
+      <ul>
+        <li><strong>Triangle numbers:</strong> 1, 3, 6, 10, 15, 21, … (+1, +2, +3, +4, +5 …)</li>
+        <li><strong>Color codes:</strong> Red=Primary, Green=Go, Blue=Calm.</li>
+        <li><strong>Memory tip:</strong> Chunk in 3’s; rehearse briefly.</li>
+      </ul>
+      <div class="row gap">
+        <button id="openHint" class="ghost">Hint (FR help)</button>
+        <button id="closeStudy" class="primary">I'm ready →</button>
+      </div>
+      <p id="hintArea" class="muted"></p>
+    </section>
+
+    <!-- Task (dynamic from questions.json) -->
+    <section id="task" class="card">
+      <div class="row space-between">
+        <h2>Task</h2>
+        <div class="mono stamp">Elapsed: <span id="taskTimer">00:00.0</span> (limit <span id="taskMax">02:00.0</span>)</div>
+      </div>
+
+      <div class="stack">
+        <label>Optional IQ proxy for WM blend (0–100):
+          <input type="range" id="iqSlider" min="0" max="100" value="50">
+          <output id="iqOut">50</output>
+        </label>
+      </div>
+
+      <form id="quizForm" class="stack">
+        <!-- Questions will render here -->
+        <div id="questionMount"></div>
+        <div class="row gap">
+          <button type="button" id="taskHint" class="ghost">Show hint</button>
+          <button type="submit" class="primary">Submit</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- Results -->
+    <section id="results" class="card">
+      <h2>Your Results</h2>
+      <div id="scoreGrid" class="grid"></div>
+
+      <div class="row gap">
+        <button id="exportJson" class="ghost">Export JSON</button>
+        <button id="exportCsv" class="ghost">Export CSV</button>
+        <button id="reset" class="danger">Reset</button>
+      </div>
+
+      <details class="muted">
+        <summary>How the scores are computed</summary>
+        <ul>
+          <li><strong>LTM</strong> = Si/Sa.</li>
+          <li><strong>STM</strong> = Sf/Sa.</li>
+          <li><strong>WM</strong> = 0.5·STM + 0.5·(IQ/100).</li>
+          <li><strong>AVP</strong> = 0.5·STM + 0.5·((tmax - t_access)/tmax).</li>
+          <li><strong>FR</strong> = 0.5·STM + 0.5·avg(1/fa, 1/fh, 1/frlh).</li>
+          <li><strong>PS</strong> = 0.5·STM + 0.5·((Tt - Ts)/Tt).</li>
+          <li><strong>ATN</strong> = 0.5·STM + 0.5·( 0.5·(AVPI + PSI) blended with completion flag ).</li>
+          <li><strong>CCS</strong> = weighted sum over all metrics.</li>
+        </ul>
+      </details>
+    </section>
+  </main>
+
+  <footer class="muted center small">
+    <p>Educational demo • © 2025 SkillPath Team • MIT License</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
